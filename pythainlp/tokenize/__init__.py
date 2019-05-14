@@ -58,7 +58,7 @@ def word_tokenize(
     elif engine == "mm" or engine == "multi_cut":
         from .multi_cut import segment
 
-        segments = segment(text, custom_dict)
+        segments = segment(text, custom_dict='/home/im-cyborg-but-its-ok/ดาวน์โหลด/Donut/deepcut_customdict/custom_dict.txt')
     elif engine == "deepcut":  # deepcut can optionally use dictionary
         from .deepcut import segment
 

@@ -50,21 +50,21 @@ def word_tokenize(
     if engine == "newmm" or engine == "onecut":
         from .newmm import segment
 
-        segments = segment(text, custom_dict)
+        segments = segment(text)
     elif engine == "longest":
         from .longest import segment
 
-        segments = segment(text, custom_dict)
+        segments = segment(text, custom_dict='content/test_text.txt')
     elif engine == "mm" or engine == "multi_cut":
         from .multi_cut import segment
 
-        segments = segment(text, custom_dict='/home/im-cyborg-but-its-ok/ดาวน์โหลด/Donut/deepcut_customdict/custom_dict.txt')
+        segments = segment(text, , custom_dict='content/test_text.txt')
     elif engine == "deepcut":  # deepcut can optionally use dictionary
         from .deepcut import segment
 
         if custom_dict:
             custom_dict = list(custom_dict)
-            segments = segment(text, custom_dict)
+            segments = segment(text, custom_dict='content/test_text.txt')
         else:
             segments = segment(text)
     elif engine == "ulmfit":  # ulmfit has its own specific dictionary
@@ -78,7 +78,7 @@ def word_tokenize(
     else:  # default, use "newmm" engine
         from .newmm import segment
 
-        segments = segment(text, custom_dict)
+        segments = segment(text, custom_dict='content/test_text.txt')
 
     if not keep_whitespace:
         segments = [token.strip(" ") for token in segments if token.strip(" ")]
@@ -235,3 +235,4 @@ class Tokenizer:
         :param str engine: choose between different options of engine to token (newmm, mm, longest)
         """
         self.__engine = engine
+        
